@@ -92,8 +92,10 @@ def start_tcp_server(host='0.0.0.0', port=5000):
                                 if isinstance(parsed_data, list):
                                     for record in parsed_data:
                                         device.add_avl_record(record)
+                                        # Remove 'end_position' from the record before sending to the API
+                                        record_for_api = {k: v for k, v in record.items() if k != 'end_position'}
                                         # Send the record to the API
-                                        send_data_to_api(imei, [record])
+                                        send_data_to_api(imei, [record_for_api])
 
                                 # Construct and send response based on Number of Data (Records)
                                 response = struct.pack('>I', num_of_data_1)
