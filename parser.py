@@ -1,3 +1,16 @@
+"""This code is designed to parse AVL packets, which contain data like timestamps, GPS coordinates,
+ and various IO (input/output) data from a device.
+
+It starts by reading and skipping some header information, like the preamble and data length.
+The codec ID is checked to ensure it's compatible (in this case, 0x08).
+The code then loops through each data record in the packet, parsing details such as:
+  1-Timestamp (converted into a human-readable format),
+  2-GPS data (longitude, latitude, altitude, speed, etc.),
+  3-IO data (various values like one-byte, two-byte, etc.).
+For each record, the parsed information (timestamp, GPS, and IO data) is stored in a dictionary and added to a list.
+The function finally returns the list of parsed AVL records, the number of records, and the current position 
+in the packet (in case there's more to parse)."""
+
 import struct
 import time
 from io_id_mapping import *

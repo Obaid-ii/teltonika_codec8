@@ -27,7 +27,8 @@ def send_raw_data_to_server(host='localhost', port=5000, imei=None, packet=None)
             #print('Sent AVL data to server:', packet)
             # Wait for response
             response = client_socket.recv(8)  # Expecting 8 bytes response
-            print(f'Received response from server: {response}')
+            response_hex = response.hex()
+            print(f'Received response from server: {response_hex}')
         else:
             print("Server rejected the IMEI.")
         
