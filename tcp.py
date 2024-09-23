@@ -31,7 +31,7 @@ def parse_imei(imei_data):
     imei = imei_data[2:2 + imei_length].decode('ascii')
     return imei
 
-def start_tcp_server(host='0.0.0.0', port=5000):
+def start_tcp_server(host='0.0.0.0', port=9025):
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.bind((host, port))
     server_socket.listen(5)  # Allow multiple connections
@@ -106,7 +106,7 @@ def start_tcp_server(host='0.0.0.0', port=5000):
                                 avl_data = avl_data[num_of_bytes_processed:]
 
                             except Exception as e:
-                                logging.error(f'Error parsing AVL data: {e}')
+                                #logging.error(f'Error parsing AVL data: {e}')
                                 break
 
                     except (ConnectionResetError, ConnectionAbortedError) as e:

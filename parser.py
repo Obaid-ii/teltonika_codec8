@@ -19,16 +19,21 @@ def parse_avl_packet(packet):
     index = 0
     avl_records = []
     no_of_records = 0
+
+
     try:
         # Parse the preamble (first 4 bytes)
+        if len(packet) < index + 4:
+            raise ValueError("Not enough data for preamble")
+        # Parse the preamble (first 4 bytes)
         preamble = packet[index:index + 4]
-        preamble_hex = preamble.hex()  # Convert it to a readable hex format (optional)
+        #preamble_hex = preamble.hex()  # Convert it to a readable hex format (optional)
         index += 4  # Move the index forward
-
+        
         # Parse the data length (next 4 bytes)
         data_length = struct.unpack('>I', packet[index:index + 4])[0]
         index += 4
-
+       
         # Parse the codec ID (next 1 byte)
         codec_id = packet[index]
         index += 1
