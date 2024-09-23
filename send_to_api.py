@@ -48,7 +48,7 @@ def send_data_to_api(device_id, parsed_data):
 
                 # Check the response
                 if response.status_code == 200:
-                    print(f"Data sent successfully to the API for Device {device_id}: {response.json()}")
+                    print(f"Data sent successfully to the API for Device {device_id}: {payload_json}")
                 else:
                     print(f"Failed to send data, Status code: {response.status_code}, Response: {response.text}")
 

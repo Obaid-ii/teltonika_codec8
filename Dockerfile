@@ -17,4 +17,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 9025
 
 # Run the Python script when the container launches
-CMD ["python", "./tcp.py",  "--host", "0.0.0.0", "--port", "9025"]  # Replace 'tcp.py' with the main file that starts your app
+CMD ["python", "tcp.py", "--host", "0.0.0.0", "--port", "9025"]  # Replace 'tcp.py' with the main file that starts your app

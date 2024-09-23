@@ -80,13 +80,13 @@ def start_tcp_server(host='0.0.0.0', port=9025):
                             logging.info("No AVL data received. Closing connection.")
                             break
 
-                        logging.info(f'Received raw AVL data: {avl_data}')
+                        #logging.info(f'Received raw AVL data: {avl_data}')
 
                         while avl_data:
                             try:
                                 # Parse the AVL packet
                                 parsed_data, num_of_data_1, num_of_bytes_processed = parse_avl_packet(avl_data)
-                                logging.info(f'Parsed AVL Data: {parsed_data}')
+                                #logging.info(f'Parsed AVL Data: {parsed_data}')
 
                                 # Store each parsed record into the device object
                                 if isinstance(parsed_data, list):
